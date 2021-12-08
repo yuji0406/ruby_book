@@ -1,20 +1,24 @@
-class User
-  attr_accessor :name
-  
-  def initialize(name)
+class Product
+  DEAFAULT_PRICE = 0
+
+  attr_reader :name, :price
+
+  def initialize(name, price = DEAFAULT_PRICE)
     @name = name
+    @price = price
   end
 
-  def self.create_users(names)
-    names.map{|name| User.new(name)}
-  end
-
-  def hello
-    puts "Hello, I am #{@name}"
+  def self.deafault_price
+    p DEAFAULT_PRICE
   end
   
+  def deafault_price
+    p DEAFAULT_PRICE
+  end
+
 end
 
-names = ["Alice", "Bob", "Carol"]
-users = User.create_users(names)
-users.each(&:hello)
+product = Product.new("A free movie")
+p product.price
+product.deafault_price
+Product.deafault_price
