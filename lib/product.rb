@@ -5,7 +5,17 @@ class Product
     @name = name
     @price = price
   end
+
+  def to_s
+    "name: #{name}"
+  end
+  private
+
+  def name
+    'A great movie'
+  end
+
 end
 product = Product.new('A great movie', 1000)
-p product.name
-p product.price
+
+p product.to_s

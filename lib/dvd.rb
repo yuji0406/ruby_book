@@ -7,8 +7,14 @@ class DVD < Product
     super(name, price)
     @running_time = running_time
   end
+
+  private
+
+  def name
+    'An awesome file'
+  end
+
 end
 dvd = DVD.new('A great movie', 1000, 120)
-p dvd.name
-p dvd.price
-p dvd.running_time
+
+p dvd.to_s
