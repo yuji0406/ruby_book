@@ -1,15 +1,16 @@
-def currency_of(country)
-  case country
-  when :japan
-    p 'yen'
-  when :us
-    p 'dollar'
-  when :india
-    p 'rupee'
-  else
-    raise NameError, "バグではなく仕様です。 #{country}"
+def send_mail_to(user)
+  if user
+  puts "#{user}にメールを送信しました"
+  1 / 0
   end
 end
+users = ["satou", "bob", "alice"]
 
-currency_of(:japan)
-currency_of(:italy)
+users.each do |user|
+  begin
+    send_mail_to(user)
+  rescue => e
+    puts "#{e.class}: エラーメッセージ#{e.message}"
+    puts e.backtrace
+  end
+end
