@@ -1,17 +1,36 @@
-require 'date'
+persons = [{name: "静岡太郎", age: 34, address: "静岡県"},
+          {name: "名古屋次郎", age: 25, address: "愛知県"},
+          {name: "大津三郎", age: 19, address: "滋賀県"}
+        ]
+puts persons[2][:name]
 
-def convert_heisei_to_date(heisei_text)
-  m = heisei_text.match(/平成(?<jp_year>\d+)年(?<month>\d+)月(?<day>\d+)日/)
-  year = m[:jp_year].to_i + 1988
-  month = m[:month].to_i
-  day = m[:day].to_i
-  begin
-    p Date.new(year, month, day)
-  rescue ArgumentError
-    nil
+def search(persons, key, query)
+  persons.each do |person|
+    if query =~ person[key]
+      puts person
+    end
   end
 end
 
-convert_heisei_to_date('平成28年12月31日')
-convert_heisei_to_date('平成29年88月22日')
-convert_heisei_to_date('平成1年11月2日')
+search(persons, :name, /大津三郎/)
+
+def hishigata(width, padding = " ")
+  return if width.zero?
+  width += 1 if width.odd?
+
+  star = "*"
+  center_star = star.center(width)
+  puts center_star
+  max = width - 2
+  interval = 1
+
+  interval.step(max, 2) do |i|
+    puts (("#{star}#{padding * i}#{star}").center(width))
+  end
+  max -= 3
+  max.step(interval, -2) do |i|
+    puts (("#{star}#{padding * i}#{star}").center(width))
+  end
+  puts center_star
+end
+hishigata(101)
